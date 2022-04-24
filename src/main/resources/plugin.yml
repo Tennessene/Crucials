@@ -1,0 +1,19 @@
+name: CrucialPlugin
+version: '${project.version}'
+main: me.acclashcorporation.crucialplugin.CrucialPlugin
+authors: [ Anston_Sorensen ]
+api-version: 1.13
+description: A crucial plugin that manages the players and can do various actions.
+commands:
+  bangui:
+    description: Brings up a useful gui for managing player bans.
+  saveserver:
+    description: Writes what you built/did to a file and saves a backup of the entire server network to my GitHub website.
+  tpplayer:
+    description: Teleport players.
+  tpall:
+    description: Teleport all the players to your location.
+  setpoint:
+    description: Save a point as a name you can teleport to.
+  tppoint:
+    description: Teleport to a saved point.
