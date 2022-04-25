@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class SaveServer implements CommandExecutor {
 
@@ -51,7 +52,7 @@ public class SaveServer implements CommandExecutor {
 
                     // push to remote:
                     PushCommand pushCommand = git.push();
-                    pushCommand.setCredentialsProvider(new UsernamePasswordCredentialsProvider("Tennessene", "anston06@"));
+                    pushCommand.setCredentialsProvider(new UsernamePasswordCredentialsProvider(readUsername(), readPassword()));
                     // you can add more settings here if needed
                     pushCommand.call();
                 } catch (GitAPIException | IOException | URISyntaxException e) {
@@ -61,5 +62,24 @@ public class SaveServer implements CommandExecutor {
             }
         }
         return true;
+    }
+
+    private String readUsername() {
+        return readCredentials(0);
+    }
+    private String readPassword() {
+        return readCredentials(1);
+    }
+
+    private String readCredentials(int i) {
+        Path tokenFile = Paths.get(System.getProperty("user.home"), "githubtoken.txt");
+        try {
+            return Files.readString(tokenFile).split(":")[i];
+        } catch (IOException | IndexOutOfBoundsException e) {
+            throw new IllegalStateException("Could not read github access token. " +
+                    "Create a read/write token and store it in " + tokenFile + " " +
+                    "in the following format: username:p@ssw0rd! \n" +
+                    "See https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token");
+        }
     }
 }
