@@ -1,4 +1,4 @@
-package me.acclashcorporation.crucialplugin.utils;
+package me.acclashcorporation.crucials.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

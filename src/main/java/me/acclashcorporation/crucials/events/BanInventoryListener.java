@@ -1,6 +1,6 @@
-package me.acclashcorporation.crucialplugin.events;
+package me.acclashcorporation.crucials.events;
 
-import me.acclashcorporation.crucialplugin.utils.BanMenuUtils;
+import me.acclashcorporation.crucials.utils.BanMenuUtils;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

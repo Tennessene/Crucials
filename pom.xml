@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me</groupId>
-    <artifactId>CrucialPlugin</artifactId>
+    <artifactId>Crucials</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>CrucialPlugin</name>
+    <name>Crucials</name>
 
-    <description>A crucial plugin that manages the players and can do various actions.</description>
+    <description>A crucial plugin that manages the server and can do various important actions.</description>
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,7 +39,29 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.bstats</pattern>
+                                    <shadedPattern>me.acclashcorporation.utils</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>plugin.properties</exclude>
+                                        <exclude>about.html</exclude>
+                                        <exclude>META-INF/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Created-By>Anston Sorensen</Created-By>
+                                    </manifestEntries>
+                                </transformer>
+                            </transformers>
                         </configuration>
                     </execution>
                 </executions>
@@ -49,7 +71,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
-                    <outputDirectory>C:\Users\Anston Sorensen\Desktop\Minecraft Servers\Hub\plugins</outputDirectory>
+                    <outputDirectory>${user.home}\Desktop\Minecraft Servers\Hub\plugins</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
@@ -69,10 +91,16 @@
         <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
             <id>jgit-repository</id>
             <url>https://repo.eclipse.org/content/groups/releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -87,6 +115,12 @@
             <groupId>org.eclipse.jgit</groupId>
             <artifactId>org.eclipse.jgit</artifactId>
             <version>6.1.0.202203080745-r</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>3.0.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

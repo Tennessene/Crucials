@@ -1,6 +1,6 @@
-package me.acclashcorporation.crucialplugin.commands;
+package me.acclashcorporation.crucials.commands;
 
-import me.acclashcorporation.crucialplugin.utils.BanMenuUtils;
+import me.acclashcorporation.crucials.utils.BanMenuUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
