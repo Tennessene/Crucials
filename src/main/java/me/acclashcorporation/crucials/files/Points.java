@@ -12,9 +12,8 @@ public class Points {
     private static File file;
     private static FileConfiguration pointsConfig;
 
-    public static void setup() {
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("CrucialPlugin").getDataFolder(), "points.yml");
-
+    public static void setup(File dataDir) {
+        file = new File(dataDir, "points.yml");
         if (!file.exists()) {
             try {
                 file.createNewFile();
