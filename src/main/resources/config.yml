@@ -1,6 +1,25 @@
 #--SAVE SERVER--
 #Leave these blank if you don't need this feature
-Repository URL: ''
-GitHub username: ''
-#DO NOT share this with anyone!! I am NOT responsible for any account compromises.
-GitHub password: ''
+
+# Remote git repository url where the backup will be stored
+# The URL syntax determines whether a given repository will use SSH or HTTPS connection
+# e.g.
+#  git@github.com:username/reponame.git
+#  https://github.com/username/reponame.git
+git.repository.url: ''
+
+# Top level directory whose content is to be backed up
+git.local.directory: ''
+
+# If accessing git over ssh (recommended), the plugin will scan ${user.home}/.ssh for required configuration.
+# If you want to use a different directory (e.g. to use a separate id_rsa key or a different list of known_hosts),
+# provide it below. Not used if accessing git over https.
+git.ssh.dir: ''
+
+# If accessing git over https, provide username and password/access token here
+git.username: ''
+git.password: ''
+
+# These will show as author for each commit. Update at will.
+git.author.name: CrucialPlugin
+git.author.email: noreply@example.com
