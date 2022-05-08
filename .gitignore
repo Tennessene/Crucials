@@ -1,0 +1,5 @@
+.idea
+target
+
+# This file contains actual credentials, and should never be committed.
+test/resources/test-git.properties

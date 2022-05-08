@@ -16,7 +16,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - run: echo ${{ secrets.TEST_GIT_PROPERTIES }} > src/test/resources/test-git.properties
+      - run: echo "${{ secrets.TEST_GIT_PROPERTIES }}" > src/test/resources/test-git.properties
       - run: mvn --batch-mode clean package
       - name: 'Create Github release'
         uses: softprops/action-gh-release@v1
